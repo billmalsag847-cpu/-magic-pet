@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080714">
+<title>DRENKER — Твой магический питомец</title>
+<style>
+:root{--bg:#070611;--panel:#100d22;--panel2:#15102d;--text:#f5f1ff;--muted:#b9b0d7;--violet:#9d4dff;--blue:#28c9ff;--line:#33245c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 10%,#25104b 0,transparent 35%),radial-gradient(ellipse at 10% 80%,#081e43 0,transparent 32%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px clamp(16px,5vw,64px);border-bottom:1px solid #2a1b4c;background:#080714cc;position:sticky;top:0;backdrop-filter:blur(14px);z-index:5}
+.logo{font-size:clamp(21px,4vw,30px);font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 12px var(--violet),0 0 28px #5b2aff}.logo span{color:var(--blue)}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav button,.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:9px 13px;cursor:pointer}nav button:hover,.ghost:hover{border-color:var(--blue);color:white}
+main{width:min(1050px,100% - 28px);margin:0 auto;padding:30px 0 56px}.hero{min-height:65vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:28px;padding:35px 0}.eyebrow{color:var(--blue);text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:800}.hero h1{font-size:clamp(36px,7vw,68px);line-height:1.02;margin:14px 0 18px;letter-spacing:-2px}.glow{background:linear-gradient(90deg,#fff,#a9baff,#cb79ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:clamp(16px,2vw,19px);line-height:1.7;color:var(--muted);max-width:560px}.hero-art{min-height:300px;display:grid;place-items:center;position:relative}.orb{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#5838a5,#1c174a 42%,#080714 72%);border:1px solid #7545ce;box-shadow:0 0 40px #6b2cff55,inset 0 0 55px #218dff22;animation:float 5s ease-in-out infinite}.creature{font-size:clamp(100px,20vw,170px);filter:drop-shadow(0 0 18px #8b54ff);transform:rotate(-8deg)}.ring{position:absolute;width:min(340px,82vw);aspect-ratio:1;border:1px solid #4b31a7;border-radius:50%;transform:rotateX(65deg);box-shadow:0 0 20px #4b31a755}.spark{position:absolute;color:var(--blue);text-shadow:0 0 15px var(--blue);font-size:25px}.spark.one{top:12%;right:13%}.spark.two{bottom:12%;left:10%}
+@keyframes float{50%{transform:translateY(-12px)}}.btn{border:0;border-radius:999px;padding:14px 23px;color:white;font-weight:800;font-size:16px;background:linear-gradient(100deg,#7b2cff,#2b7cff);box-shadow:0 0 18px #813bff70;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px #813bffb0}.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}.features{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.pill{border:1px solid var(--line);background:#100d22aa;border-radius:999px;padding:9px 12px;color:#d8d0f0;font-size:13px}
+.card{background:linear-gradient(145deg,#130f27ee,#0b0a18ee);border:1px solid var(--line);border-radius:24px;padding:clamp(18px,4vw,32px);box-shadow:0 18px 60px #0005}.hidden{display:none!important}.quiz-top{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px}.progress{height:8px;background:#27203e;border-radius:99px;overflow:hidden;margin:13px 0 25px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--blue));box-shadow:0 0 12px var(--violet);transition:width .25s}.question{font-size:clamp(22px,4vw,32px);line-height:1.25;margin:0 0 22px}.answers{display:grid;gap:11px}.answer{display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:15px 16px;border:1px solid #38275e;border-radius:15px;background:#0b0a18;color:var(--text);font-size:15px;cursor:pointer;transition:.18s}.answer:hover{border-color:var(--blue);background:#15102b}.answer.selected{border-color:var(--violet);background:#21113c;box-shadow:0 0 16px #8b3dff25}.dot{width:18px;height:18px;flex:0 0 18px;border:1px solid #8770bd;border-radius:50%}.selected .dot{border:5px solid var(--blue);box-shadow:0 0 10px var(--blue)}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:25px}.result{text-align:center}.result-emoji{font-size:clamp(90px,18vw,150px);filter:drop-shadow(0 0 24px #7b45ff);margin:8px 0}.result h2{font-size:clamp(30px,6vw,48px);margin:8px 0}.result .desc{max-width:680px;margin:12px auto;color:var(--muted);line-height:1.8;font-size:16px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}.stat{padding:15px 8px;background:#0b0a18;border:1px solid var(--line);border-radius:14px}.stat strong{display:block;color:var(--blue);margin-bottom:5px}.stat span{font-size:12px;color:var(--muted)}.about{margin-top:25px}.about h3{margin-top:0}.about p{color:var(--muted);line-height:1.75}footer{text-align:center;color:#81779f;border-top:1px solid #241a40;padding:24px 12px;font-size:12px}
+@media(max-width:700px){header{align-items:flex-start;flex-direction:column}nav{width:100%}nav button{font-size:12px;padding:8px 10px}.hero{grid-template-columns:1fr;gap:0;padding-top:24px}.hero-art{min-height:250px;grid-row:1}.orb{width:220px}.ring{width:255px}.creature{font-size:125px}.hero h1{margin-top:0}.stats{grid-template-columns:1fr}.quiz-actions .btn{padding:12px 17px}.card{border-radius:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">✦ DRENKER<span> / MAGIC</span></div>
+  <nav aria-label="Навигация"><button id="homeNav">Главная</button><button id="quizNav">Опрос</button><button id="aboutNav">О проекте</button></nav>
+</header>
+<main>
+  <section id="home" class="hero">
+    <div>
+      <div class="eyebrow">✦ Найди своего спутника ✦</div>
+      <h1>Какой <span class="glow">магический питомец</span> тебе подходит?</h1>
+      <p>Ответь на 20 вопросов о своём характере, мечтах и стиле жизни. В конце тебя ждёт магическое существо, которое подходит именно тебе.</p>
+      <button class="btn" id="startBtn">Начать опрос&nbsp; →</button>
+      <div class="features"><span class="pill">✧ 20 вопросов</span><span class="pill">✧ 8 видов питомцев</span><span class="pill">✧ Бесплатно</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="ring"></div><div class="orb"><div class="creature">🐉</div></div><span class="spark one">✦</span><span class="spark two">✧</span></div>
+  </section>
+
+  <section id="quiz" class="card hidden" aria-live="polite">
+    <div class="quiz-top"><span id="counter">Вопрос 1 из 20</span><span id="percent">5%</span></div>
+    <div class="progress"><div id="bar"></div></div>
+    <h2 class="question" id="questionText"></h2>
+    <div class="answers" id="answers"></div>
+    <div class="quiz-actions"><button class="ghost" id="backBtn">← Назад</button><button class="btn" id="nextBtn" disabled>Далее →</button></div>
+  </section>
+
+  <section id="result" class="card result hidden" aria-live="polite">
+    <div class="eyebrow">✦ Твой магический спутник ✦</div>
+    <div class="result-emoji" id="resultEmoji">🐉</div>
+    <h2 class="glow" id="resultName"></h2>
+    <div class="pill" id="resultElement"></div>
+    <p class="desc" id="resultDesc"></p>
+    <div class="stats">
+      <div class="stat"><strong id="trait1">Храбрость</strong><span>Главная сила</span></div>
+      <div class="stat"><strong id="trait2">Верность</strong><span>Особый дар</span></div>
+      <div class="stat"><strong id="trait3">Защита</strong><span>Магия питомца</span></div>
+    </div>
+    <button class="btn" id="restartBtn">Пройти ещё раз ↻</button>
+    <button class="ghost" id="shareBtn" style="margin-left:8px">Поделиться результатом</button>
+    <p id="shareStatus" style="color:var(--muted);font-size:13px"></p>
+  </section>
+
+  <section id="about" class="card about">
+    <h3 class="glow">О проекте DRENKER</h3>
+    <p>Это развлекательный тест, который подбирает магического питомца по твоим ответам. Здесь есть драконы, фениксы, лунные волки и другие фантастические существа. Не существует неправильных ответов — выбирай то, что больше похоже на тебя.</p>
+    <p>Тест работает прямо в браузере. Ответы не отправляются на сервер и не сохраняются после закрытия страницы.</p>
+  </section>
+</main>
+<footer>© DRENKER · Магия начинается с любопытства ✦</footer>
+<script>
+const questions = [
+ {q:"Как ты обычно проводишь свободное время?",a:[["Исследую новые места","wolf"],["Отдыхаю в уютной обстановке","moon"],["Создаю что-то новое","phoenix"],["Провожу время с друзьями","fairy"],["Ищу приключения и испытания","dragon"]]},
+ {q:"Какое место тебе ближе всего?",a:[["Высокие горы и древние руины","dragon"],["Тихий лес под луной","wolf"],["Звёздное небо и космос","cosmic"],["Тёплый дом у камина","fire"],["Сказочный сад","fairy"]]},
+ {q:"Какое качество ты ценишь в себе?",a:[["Смелость","dragon"],["Спокойствие","moon"],["Любознательность","cosmic"],["Доброту","fairy"],["Умение подняться после неудачи","phoenix"]]},
+ {q:"Выбери магическую стихию.",a:[["Огонь","fire"],["Вода и лёд","ice"],["Молния","dragon"],["Лунный свет","moon"],["Звёздная энергия","cosmic"]]},
+ {q:"Что ты сделаешь, если другу нужна помощь?",a:[["Встану на его защиту","dragon"],["Спокойно выслушаю","moon"],["Придумаю необычное решение","cosmic"],["Поддержу и ободрю","fairy"],["Не сдамся, пока не помогу","phoenix"]]},
+ {q:"Какой цвет тебе нравится больше?",a:[["Фиолетовый","cosmic"],["Синий","ice"],["Красный","fire"],["Серебряный","moon"],["Зелёный","forest"]]},
+ {q:"Как ты относишься к неожиданностям?",a:[["Обожаю приключения","dragon"],["Сначала наблюдаю","moon"],["Сразу хочу всё изучить","cosmic"],["Стараюсь найти хорошее","phoenix"],["Предпочитаю уют и знакомое","forest"]]},
+ {q:"Какую суперспособность выберешь?",a:[["Летать сквозь облака","dragon"],["Исцелять других","fairy"],["Становиться невидимым","moon"],["Управлять временем","cosmic"],["Возрождаться после поражения","phoenix"]]},
+ {q:"Какой звук кажется волшебным?",a:[["Гром во время грозы","dragon"],["Шум дождя","ice"],["Пение птиц в лесу","forest"],["Тихая ночная музыка","moon"],["Треск костра","fire"]]},
+ {q:"Какая роль тебе ближе в команде?",a:[["Лидер и защитник","dragon"],["Мудрый советчик","moon"],["Генератор идей","cosmic"],["Тот, кто всех объединяет","fairy"],["Тот, кто не даёт сдаться","phoenix"]]},
+ {q:"Выбери волшебный предмет.",a:[["Древний меч","dragon"],["Кристалл льда","ice"],["Звёздный компас","cosmic"],["Семечко волшебного дерева","forest"],["Амулет с пером феникса","phoenix"]]},
+ {q:"Какой темп жизни тебе подходит?",a:[["Быстрый и полный событий","fire"],["Размеренный и спокойный","moon"],["Свободный, без строгих правил","cosmic"],["Активный на природе","forest"],["Меняющийся — люблю обновления","phoenix"]]},
+ {q:"Что ты скорее выберешь в сказочном мире?",a:[["Сразиться с драконом","dragon"],["Разгадать древнюю загадку","cosmic"],["Помочь волшебному существу","fairy"],["Исследовать ледяную пещеру","ice"],["Найти тайную лесную тропу","forest"]]},
+ {q:"Что помогает тебе справляться со сложностями?",a:[["Решительность","fire"],["Терпение","moon"],["Логика","cosmic"],["Поддержка близких","fairy"],["Умение начинать заново","phoenix"]]},
+ {q:"Какой питомец кажется тебе самым уютным?",a:[["Пушистый ночной волк","wolf"],["Маленький лесной дух","forest"],["Светящийся лисёнок","fairy"],["Снежный кот","ice"],["Карманный дракончик","dragon"]]},
+ {q:"Как ты относишься к тайнам?",a:[["Хочу раскрыть каждую","cosmic"],["Люблю загадки и легенды","moon"],["Сохраняю тайны друзей","wolf"],["Тайны делают мир красивее","fairy"],["Лучше узнать всё на практике","fire"]]},
+ {q:"Выбери идеальную погоду.",a:[["Гроза и молнии","dragon"],["Снег и мороз","ice"],["Тёплый солнечный день","fire"],["Туманное утро в лесу","forest"],["Ясная ночь со звёздами","cosmic"]]},
+ {q:"Что бы ты хотел получить от магического питомца?",a:[["Силу и защиту","dragon"],["Верность и дружбу","wolf"],["Мудрость и советы","moon"],["Радость и вдохновение","phoenix"],["Чудеса и веселье","fairy"]]},
+ {q:"Какая фраза тебе ближе?",a:[["Смелость открывает путь","dragon"],["Тишина помогает услышать себя","moon"],["Всегда есть что-то новое","cosmic"],["Доброта — тоже сила","fairy"],["После ночи приходит рассвет","phoenix"]]},
+ {q:"Какое приключение выберешь прямо сейчас?",a:[["Полёт над вулканами","fire"],["Путешествие по лунному лесу","wolf"],["Экспедицию к далёким звёздам","cosmic"],["Поиск затерянного ледяного храма","ice"],["Спасение зачарованного сада","forest"]]}
+];
+const pets = {
+ dragon:{name:"Звёздный дракон",emoji:"🐉",element:"Стихия: молния и звёздный огонь",desc:"Отважный и величественный спутник. Звёздный дракон подходит тем, кто любит вызовы, умеет защищать близких и не боится идти собственным путём. Его крылья сияют, когда рядом появляется новая возможность.",traits:["Храбрость","Молния","Защита"]},
+ wolf:{name:"Сумеречный волк",emoji:"🐺",element:"Стихия: тень и ветер",desc:"Верный, чуткий и независимый спутник. Сумеречный волк чувствует настроение друзей и всегда найдёт дорогу домой. Он подходит тем, кто ценит доверие, свободу и настоящую дружбу.",traits:["Верность","Сверхчутьё","Защита"]},
+ moon:{name:"Лунный хранитель",emoji:"🌙",element:"Стихия: лунный свет",desc:"Мудрый и спокойный питомец, который словно знает ответы на вопросы, ещё не заданные вслух. Он помогает замечать детали, сохранять равновесие и не теряться в тёмные времена.",traits:["Мудрость","Сновидения","Спокойствие"]},
+ phoenix:{name:"Феникс рассвета",emoji:"🔥",element:"Стихия: пламя и возрождение",desc:"Яркий дух надежды и обновления. Феникс рассвета подходит тем, кто умеет учиться на ошибках, вдохновлять других и снова подниматься после неудач. Его перья светятся цветами нового утра.",traits:["Стойкость","Возрождение","Вдохновение"]},
+ fairy:{name:"Светлячок фей",emoji:"🧚",element:"Стихия: свет и радость",desc:"Добрый и игривый магический спутник. Он превращает обычные моменты в маленькие чудеса, поддерживает друзей и помогает видеть хорошее даже в сложный день.",traits:["Доброта","Исцеление","Радость"]},
+ cosmic:{name:"Космический лис",emoji:"🦊",element:"Стихия: звёзды и пространство",desc:"Любознательный, хитроумный и изобретательный питомец. Космический лис обожает загадки, необычные идеи и дальние путешествия. С ним скучных дорог просто не бывает.",traits:["Смекалка","Телепортация","Любопытство"]},
+ ice:{name:"Ледяной грифон",emoji:"🦅",element:"Стихия: лёд и северный ветер",desc:"Гордый и надёжный страж. Ледяной грифон сохраняет ясность мысли в любой буре и помогает своему спутнику оставаться собранным. Его крылья оставляют в воздухе искристый снежный след.",traits:["Выдержка","Ледяной щит","Ясность"]},
+ forest:{name:"Дух древнего леса",emoji:"🌿",element:"Стихия: природа и рост",desc:"Заботливый хранитель всего живого. Он чувствует перемены в природе, умеет находить скрытые тропы и напоминает, что даже маленькое семя может вырасти в огромное дерево.",traits:["Забота","Рост","Связь с природой"]},
+ fire:{name:"Огненный саламандр",emoji:"🦎",element:"Стихия: огонь и тепло",desc:"Энергичный, весёлый и смелый питомец. Он согревает друзей, заряжает окружающих энтузиазмом и первым бросается навстречу интересному приключению.",traits:["Энергия","Огненный рывок","Оптимизм"]}
+};
+let current=0, chosen=Array(questions.length).fill(null);
+const $=id=>document.getElementById(id);
+function show(section){["home","quiz","result"].forEach(id=>$(id).classList.toggle("hidden",id!==section));if(section==="quiz")window.scrollTo({top:0,behavior:"smooth"});else window.scrollTo({top:0,behavior:"smooth"});}
+function renderQuestion(){const q=questions[current];$("counter").textContent=`Вопрос ${current+1} из ${questions.length}`;$("percent").textContent=`${Math.round((current+1)/questions.length*100)}%`;$("bar").style.width=`${(current+1)/questions.length*100}%`;$("questionText").textContent=q.q;$("answers").innerHTML="";q.a.forEach(([label,type],i)=>{const b=document.createElement("button");b.className="answer"+(chosen[current]===i?" selected":"");b.innerHTML=`<span class="dot"></span><span></span>`;b.lastElementChild.textContent=label;b.onclick=()=>{chosen[current]=i;renderQuestion();};$("answers").appendChild(b);});$("backBtn").disabled=current===0;$("backBtn").style.opacity=current===0?".35":"1";$("nextBtn").disabled=chosen[current]===null;$("nextBtn").textContent=current===questions.length-1?"Узнать результат ✦":"Далее →";}
+function finish(){const scores={};Object.keys(pets).forEach(k=>scores[k]=0);chosen.forEach((answer,idx)=>{if(answer!==null){const key=questions[idx].a[answer][1];scores[key]=(scores[key]||0)+1;}});let best=Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0];const pet=pets[best];$("resultEmoji").textContent=pet.emoji;$("resultName").textContent=pet.name;$("resultElement").textContent=pet.element;$("resultDesc").textContent=pet.desc;$("trait1").textContent=pet.traits[0];$("trait2").textContent=pet.traits[1];$("trait3").textContent=pet.traits[2];$("shareStatus").textContent="";show("result");}
+$("startBtn").onclick=()=>{current=0;show("quiz");renderQuestion();};$("quizNav").onclick=()=>{if(chosen.some(x=>x!==null)){current=Math.max(0,chosen.findIndex(x=>x===null));if(current<0)current=19;show("quiz");renderQuestion();}else{$("startBtn").click();}};$("homeNav").onclick=()=>show("home");$("aboutNav").onclick=()=>{show("home");$("about").scrollIntoView({behavior:"smooth"});};
+$("backBtn").onclick=()=>{if(current>0){current--;renderQuestion();}};$("nextBtn").onclick=()=>{if(chosen[current]===null)return;if(current<questions.length-1){current++;renderQuestion();}else finish();};$("restartBtn").onclick=()=>{chosen=Array(questions.length).fill(null);current=0;show("quiz");renderQuestion();};$("shareBtn").onclick=async()=>{const text=`Мой магический питомец на DRENKER: ${$("resultName").textContent}! ${$("resultDesc").textContent}`;try{if(navigator.share){await navigator.share({title:"Мой магический питомец",text});}else if(navigator.clipboard){await navigator.clipboard.writeText(text);$("shareStatus").textContent="Результат скопирован! Можешь отправить его друзьям.";}else{$("shareStatus").textContent=text;}}catch(e){$("shareStatus").textContent="Можно скопировать название питомца и отправить друзьям.";}};
+</script>
+</body>
+</html>
